@@ -1,8 +1,11 @@
+package vista;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class LoginForm extends JFrame {
 
+    public JButton loginButton;
     private JTextField usuarioField;
     private JPasswordField contrasenaField;
     private JLabel inicioIncorrecto;
@@ -38,14 +41,13 @@ public class LoginForm extends JFrame {
         inicioIncorrecto.setBounds(180, 100, 160, 25);
         add(inicioIncorrecto);
 
-        JButton loginButton = new JButton("Login");
+        loginButton = new JButton("Login");
         loginButton.setBounds(180, 130, 90, 25);
         add(loginButton);
 
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         setVisible(true);
 
-        esInicioInvalido(false);
 
     }
 
@@ -57,11 +59,11 @@ public class LoginForm extends JFrame {
         return new String(contrasenaField.getPassword());
     }
 
-    public void esInicioInvalido(boolean resultado) {
+    public void esInicioValido(boolean resultado) {
         if (resultado) {
-            inicioIncorrecto.setText("Inicio inválido");
-        } else {
             inicioIncorrecto.setText("Inicio válido");
+        } else {
+            inicioIncorrecto.setText("Inicio inválido");
         }
 
     }
