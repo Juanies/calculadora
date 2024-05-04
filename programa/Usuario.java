@@ -1,37 +1,46 @@
 package programa;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.util.ArrayList;
 
 import programa.Ficheros.*;
-public class Usuario {
+public class Usuario implements Serializable {
+    private static final long serialVersionUID = -6083946477523703971L;
+    static int contador; // Contador estático para generar IDs únicos
+
+    static {
+        try {
+            contador = Ficheros.ultimaIdUsuario();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int id;                   // ID único para cada usuario
     private String nombre;
-    private int id = 0;
     private String rol;
     private String contrasena;
 
-    // Iniciar sesion
-
-
-
     public Usuario(String nombre, String contrasena, String rol) {
+        this.id = ++contador;          // Incrementar contador y asignar como ID único
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.rol = rol;
-        id++;
     }
-
     //TODO: Hacer el inicio de sesion
-    public static boolean iniciarSesion(String nombre, String contraseña) throws IOException {
+    public static boolean iniciarSesion(String nombre, String contraseña) throws IOException, ClassNotFoundException {
         File fichero = Ficheros.getFicherousuarios();
         ObjectInputStream input = new ObjectInputStream(new FileInputStream(fichero));
         boolean resultado = false;
+        ArrayList<Usuario> datos = Ficheros.leerDatos();
 
-
-
-
+        for(Usuario dato : datos){
+            if (dato.getNombre().equals(nombre) && dato.getContrasena().equals(contraseña)){
+                resultado = true;
+            }
+        }
 
         return resultado;
     }
@@ -70,7 +79,6 @@ public class Usuario {
         this.rol = rol;
     }
 
-    @Override
     public String toString() {
         return "Usuario{" +
                 "nombre='" + nombre + '\'' +

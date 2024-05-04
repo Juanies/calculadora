@@ -1,59 +1,75 @@
 package programa;
 
+import java.awt.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Ficheros {
 
+
     public static File getFicherousuarios(){
-        return new File("usuarios.dat");
+        System.out.println("Retornando fichero");
+        return new File("F:\\1DAM\\Nueva carpeta\\calculadora\\datos\\usuarios.dat");
     }
 
-    public static ArrayList<Object> leerObjectoFichero() throws IOException, ClassNotFoundException {
+    public static int ultimaIdUsuario() throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> usuarios = leerDatos();
+        return usuarios.get(usuarios.size() -1).getId();
+    }
 
-        ObjectInputStream  oi = new ObjectInputStream(new FileInputStream(getFicherousuarios()));
-        ArrayList<Object> res = new ArrayList<>();
+    public static void primerUsuario() throws IOException {
+        ObjectOutputStream x = new ObjectOutputStream(new FileOutputStream(getFicherousuarios()));
+        x.writeObject(new Usuario("Paco", "123", "Admin"));
+        x.close();
+    }
 
-        while (oi.available() > 0){
-            Object ob = oi.readObject();
-            res.add(ob);
+    public static ArrayList<Usuario> leerDatos() throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> datos = new ArrayList<>();
+        File file = getFicherousuarios();
+
+        if (file.exists()) {
+            FileInputStream fin = new FileInputStream(file);
+            ObjectInputStream ofin = new ObjectInputStream(fin);
+                while (fin.available() > 0) {
+                    Usuario equipo = (Usuario) ofin.readObject();
+                    datos.add(equipo);
+                }
+        }
+        return datos;
+    }
+
+
+    public static ArrayList<Usuario> leerDatos2() throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> datos = new ArrayList<>();
+        File file = getFicherousuarios();
+
+        if (file.exists()) {
+            FileInputStream fin = new FileInputStream(file);
+            ObjectInputStream ofin = new ObjectInputStream(fin);
+            while (fin.available() > 0) {
+                Usuario equipo = (Usuario) ofin.readObject();
+                datos.add(equipo);
+                System.out.println(equipo);
+            }
+        }
+        return datos;
+    }
+
+
+    public static void insertarDatos(ArrayList<Usuario> nuevosDatos) throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> datos = leerDatos();
+
+        datos.addAll(nuevosDatos);
+
+        ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(getFicherousuarios()));
+
+        for(int con2 = 0; con2 < datos.size(); con2++){
+            oout.writeObject(datos.get(con2));
         }
 
-        oi.close();
-        return res;
+        oout.close();
 
-    }
-
-
-    public static boolean insertarObjetosFichero(File fichero, ArrayList<Object> objetosInsertar)  {
-
-        Boolean res = true;
-
-
-
-       try {
-
-           ArrayList<Object> objetos = leerObjectoFichero();
-
-
-           for(Object datos : objetosInsertar){
-               objetos.add(datos);
-           }
-
-           ObjectOutputStream Oout = new ObjectOutputStream(new FileOutputStream(getFicherousuarios()));
-
-           for(Object datos : objetos){
-               Oout.writeObject(datos);
-           }
-
-           Oout.close();
-
-       }catch (Exception e){
-
-           res = false;
-           e.printStackTrace();
-       }
-        return res;
     }
 
 }

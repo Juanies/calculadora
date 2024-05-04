@@ -8,6 +8,7 @@ public class Administrador extends Usuario{
     public static boolean crearNuevoUsuario(String nombre, String contrasena, String rol){
         Object usuario = new Object();
         boolean res = false;
+
         if (rol.equals("Administrador")){
             usuario = new Administrador(nombre, contrasena, rol);
             res = true;
@@ -15,10 +16,7 @@ public class Administrador extends Usuario{
             usuario = new Usuario(nombre, contrasena, rol);
             res = true;
         }
+
         return res;
     }
-    // holag
-
-
-
 }
