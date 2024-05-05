@@ -1,17 +1,15 @@
 package programa;
 
 import vista.LoginForm;
-import vista.calculadora;
-
-import javax.swing.*;
+import vista.Calculadora;
 
 public class Ventanas {
 
-    public calculadora loginaCalculadora(Boolean cambiar, LoginForm login){
-        calculadora calc = null;
+    public Calculadora loginaCalculadora(Boolean cambiar, LoginForm login){
+        Calculadora calc = null;
         if (cambiar){
             login.dispose();
-            calc = new calculadora();
+            calc = new Calculadora();
         }
         return  calc;
     }

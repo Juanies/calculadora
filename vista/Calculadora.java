@@ -2,17 +2,21 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
-public class calculadora extends JFrame {
+public class Calculadora extends JFrame {
     private JFrame frame;
     private JPanel buttonPanel;
-    private JTextField display;
+    private JLabel display;
     private JLabel user;
     private JLabel rol;
     private JButton changeUser;
+    public ArrayList<JButton> botones;
 
 
-    public calculadora() {
+
+
+    public Calculadora() {
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 400);
@@ -30,19 +34,19 @@ public class calculadora extends JFrame {
         changeUser = new JButton("Cambiar usuario");
         userInfoPanel.add(changeUser, BorderLayout.EAST);
 
-
         mainPanel.add(userInfoPanel, BorderLayout.NORTH);
 
-        display = new JTextField();
-        display.setEditable(false);
+        display = new JLabel();
         display.setHorizontalAlignment(JTextField.RIGHT);
         display.setFont(new Font("Arial", Font.PLAIN, 24));
 
         mainPanel.add(display, BorderLayout.CENTER);
+        botones = new ArrayList<>();
 
         buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 4, 10, 10));
+        buttonPanel.setLayout(new GridLayout(5, 4, 10, 10));
         String[] buttonLabels = {
+                "1/x", "x\u00B2", "CE", "\u21E6",
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
                 "1", "2", "3", "-",
@@ -50,6 +54,7 @@ public class calculadora extends JFrame {
         };
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
+            botones.add(button);
             buttonPanel.add(button);
         }
 
@@ -67,5 +72,11 @@ public class calculadora extends JFrame {
         rol.setText(" - "+ role);
     }
 
+    public void setRes(String res){ display.setText(res); }
+
+
+    public String getRes(){
+        return display.getText();
+    }
 
 }

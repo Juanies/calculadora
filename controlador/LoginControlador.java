@@ -4,14 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import programa.Calculos;
 import programa.Usuario;
 import programa.Ventanas;
 import vista.*;
-public class Controlador implements ActionListener {
+public class LoginControlador implements ActionListener {
     private LoginForm login;
-    private calculadora calculadora;
+    private Calculadora calculadora;
 
-    public Controlador(LoginForm view) {
+    public LoginControlador(LoginForm view) {
         this.login = view;
         view.loginButton.addActionListener(this);
     }
@@ -28,22 +29,22 @@ public class Controlador implements ActionListener {
                 } catch (ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
+            case "=" :
+                Calculos.calcular(calculadora.getRes());
         }
     }
 
     public void setLogin() throws IOException, ClassNotFoundException {
-
         boolean res = Usuario.iniciarSesion(login.getUsuario(), login.getPassword());
         Ventanas ventana = new Ventanas();
 
-        calculadora calc = ventana.loginaCalculadora(res, login);
+        calculadora = ventana.loginaCalculadora(res, login);
 
         Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
-        calc.setUser(user.getNombre());
-        calc.setRol(user.getRol());
+        calculadora.setUser(user.getNombre());
+        calculadora.setRol(user.getRol());
         login.esInicioValido(res);
-
-
+        new CalculadoraControlador(calculadora);
     }
 
 }

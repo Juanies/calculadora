@@ -45,7 +45,7 @@ public class LoginForm extends JFrame {
         loginButton.setBounds(180, 130, 90, 25);
         add(loginButton);
 
-        setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        setLocationRelativeTo(null);
         setVisible(true);
 
 
