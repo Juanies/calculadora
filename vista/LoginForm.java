@@ -65,6 +65,5 @@ public class LoginForm extends JFrame {
         } else {
             inicioIncorrecto.setText("Inicio inválido");
         }
-
     }
 }

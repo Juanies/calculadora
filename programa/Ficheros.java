@@ -9,12 +9,15 @@ public class Ficheros {
 
 
     public static File getFicherousuarios(){
-        System.out.println("Retornando fichero");
         return new File("F:\\1DAM\\Nueva carpeta\\calculadora\\datos\\usuarios.dat");
     }
 
+    public static File getFicheroUsuarioActual(){
+        return new File("F:\\1DAM\\Nueva carpeta\\calculadora\\datos\\usuarioActual.dat");
+    }
+
     public static int ultimaIdUsuario() throws IOException, ClassNotFoundException {
-        ArrayList<Usuario> usuarios = leerDatos();
+        ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
         return usuarios.get(usuarios.size() -1).getId();
     }
 
@@ -24,9 +27,8 @@ public class Ficheros {
         x.close();
     }
 
-    public static ArrayList<Usuario> leerDatos() throws IOException, ClassNotFoundException {
+    public static ArrayList<Usuario> leerDatos(File file) throws IOException, ClassNotFoundException {
         ArrayList<Usuario> datos = new ArrayList<>();
-        File file = getFicherousuarios();
 
         if (file.exists()) {
             FileInputStream fin = new FileInputStream(file);
@@ -57,12 +59,12 @@ public class Ficheros {
     }
 
 
-    public static void insertarDatos(ArrayList<Usuario> nuevosDatos) throws IOException, ClassNotFoundException {
-        ArrayList<Usuario> datos = leerDatos();
+    public static void insertarDatos(ArrayList<Usuario> nuevosDatos, File fichero) throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> datos = leerDatos(fichero);
 
         datos.addAll(nuevosDatos);
 
-        ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(getFicherousuarios()));
+        ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(fichero));
 
         for(int con2 = 0; con2 < datos.size(); con2++){
             oout.writeObject(datos.get(con2));
@@ -72,4 +74,11 @@ public class Ficheros {
 
     }
 
+    public static void insertarSoloUnDato(Object nuevosDato, File fichero) throws IOException, ClassNotFoundException {
+        ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(fichero));
+
+        oout.writeObject(nuevosDato);
+
+        oout.close();
+    }
 }

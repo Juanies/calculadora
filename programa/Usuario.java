@@ -34,14 +34,36 @@ public class Usuario implements Serializable {
         File fichero = Ficheros.getFicherousuarios();
         ObjectInputStream input = new ObjectInputStream(new FileInputStream(fichero));
         boolean resultado = false;
-        ArrayList<Usuario> datos = Ficheros.leerDatos();
+        ArrayList<Usuario> datos = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
         for(Usuario dato : datos){
             if (dato.getNombre().equals(nombre) && dato.getContrasena().equals(contraseña)){
                 resultado = true;
+                Ficheros.insertarSoloUnDato(dato, Ficheros.getFicheroUsuarioActual());
             }
         }
 
+        return resultado;
+    }
+
+    public static boolean NombreUsuarioRepetido(ArrayList<Usuario> usuarios, String nombreUsuario){
+        boolean res = false;
+        for(Usuario dato : usuarios){
+            if (nombreUsuario.equals(dato.getNombre())){
+                res = true;
+            }
+        }
+        return res;
+    }
+
+    public static Usuario buscarUsuarioPorNombre(String nombre) throws IOException, ClassNotFoundException {
+        ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
+        Usuario resultado = null;
+        for(Usuario dato : usuarios){
+            if (dato.getNombre().equals(nombre)){
+                resultado = dato;
+            }
+        }
         return resultado;
     }
 

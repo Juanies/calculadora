@@ -9,6 +9,7 @@ import programa.Ventanas;
 import vista.*;
 public class Controlador implements ActionListener {
     private LoginForm login;
+    private calculadora calculadora;
 
     public Controlador(LoginForm view) {
         this.login = view;
@@ -32,10 +33,17 @@ public class Controlador implements ActionListener {
 
     public void setLogin() throws IOException, ClassNotFoundException {
 
-        System.out.println("Iniciando Sesion");
-        Boolean res = Usuario.iniciarSesion(login.getUsuario(), login.getPassword());
-        Ventanas.loginaCalculadora(res, login);
+        boolean res = Usuario.iniciarSesion(login.getUsuario(), login.getPassword());
+        Ventanas ventana = new Ventanas();
+
+        calculadora calc = ventana.loginaCalculadora(res, login);
+
+        Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
+        calc.setUser(user.getNombre());
+        calc.setRol(user.getRol());
         login.esInicioValido(res);
+
+
     }
 
 }
