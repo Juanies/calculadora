@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import programa.Ficheros.*;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = -6083946477523703971L;
-    static int contador; // Contador estático para generar IDs únicos
+    static int contador;
 
     static {
         try {
@@ -18,13 +18,14 @@ public class Usuario implements Serializable {
         }
     }
 
-    private int id;                   // ID único para cada usuario
+    private int id;
+
     private String nombre;
     private String rol;
     private String contrasena;
 
     public Usuario(String nombre, String contrasena, String rol) {
-        this.id = ++contador;          // Incrementar contador y asignar como ID único
+        this.id = ++contador;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.rol = rol;
