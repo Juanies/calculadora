@@ -73,10 +73,18 @@ public class CalculadoraControlador implements ActionListener {
             case "\u21E6":
                 borrarUnNumero();
                 break;
+            case "1/x":
+                didivir1();
+                break;
             case "CE":
                 resetear();
                 break;
         }
+    }
+
+    public void didivir1(){
+        double resultado = Calculos.Dividir1(Double.parseDouble(linea));
+        calc.setRes(String.valueOf(resultado));
     }
 
     public void actualizarLinea(String numero){
