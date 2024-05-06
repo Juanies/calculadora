@@ -26,8 +26,6 @@ public class CalculadoraControlador implements ActionListener {
 
         calculadora.changeUser.addActionListener(this);
 
-
-
     }
 
     @Override
@@ -88,7 +86,9 @@ public class CalculadoraControlador implements ActionListener {
                 cambiarUsuario(calc);
                 break;
             case "=":
-                calc.setRes(String.valueOf(Calculos.calcular(linea)));;
+                String res = String.valueOf(Calculos.calcular(linea));
+                calc.setRes(res);
+                linea = res;
                 break;
         }
     }
