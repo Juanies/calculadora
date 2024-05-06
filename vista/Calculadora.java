@@ -52,6 +52,7 @@ public class Calculadora extends JFrame {
                 "1", "2", "3", "-",
                 ".", "0", "=", "+"
         };
+
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
             botones.add(button);
@@ -73,7 +74,6 @@ public class Calculadora extends JFrame {
     }
 
     public void setRes(String res){ display.setText(res); }
-
 
     public String getRes(){
         return display.getText();

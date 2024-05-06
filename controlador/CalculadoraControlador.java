@@ -10,12 +10,13 @@ import programa.Usuario;
 import programa.Ventanas;
 import vista.*;
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 
 public class CalculadoraControlador implements ActionListener {
 
     private  Calculadora calc;
-
+    public String linea = "";
     public CalculadoraControlador(Calculadora calculadora) {
         this.calc = calculadora;
 
@@ -28,11 +29,74 @@ public class CalculadoraControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "1":
-                System.out.println("1");
+                actualizarLinea("1");
                 break;
             case "2":
-                System.out.println("2");
+                actualizarLinea("2");
+                break;
+            case "3":
+                actualizarLinea("3");
+                break;
+            case "4":
+                actualizarLinea("4");
+                break;
+            case "5":
+                actualizarLinea("5");
+                break;
+            case "6":
+                actualizarLinea("6");
+                break;
+            case "7":
+                actualizarLinea("7");
+                break;
+            case "8":
+                actualizarLinea("8");
+                break;
+            case "9":
+                actualizarLinea("9");
+                break;
+            case "+":
+                actualizarLinea("9");
+                break;
+                case "/":
+                    actualizarLinea("/");
+                break;
+                case "*":
+                    actualizarLinea("*");
+                break;
+                case "-":
+                    actualizarLinea("-");
+                break;
+            case "x\u00B2":
+                potencia();
+                break;
+            case "\u21E6":
+                borrarUnNumero();
+                break;
+            case "CE":
+                resetear();
                 break;
         }
     }
+
+    public void actualizarLinea(String numero){
+        linea += numero;
+        calc.setRes(linea.trim());
+    }
+
+    public void potencia(){
+        double numero = Double.parseDouble(linea);
+        calc.setRes(String.valueOf(Calculos.Potencia(numero)));
+    }
+
+    public void borrarUnNumero(){
+        linea = linea.substring(0, linea.length() - 1);
+        calc.setRes(linea.trim());
+    }
+
+    public void resetear(){
+        linea = " ";
+        calc.setRes(linea);
+    }
+
 }

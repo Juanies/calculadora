@@ -22,8 +22,8 @@ public class Calculos {
         return num1 * num2;
     }
 
-    public static double Potencia(double  num1, double  num2){
-        return num1 * num2;
+    public static double Potencia(double  num1){
+        return Math.pow(num1 ,2);
     }
 
     public static double Dividir1(double  num2){
