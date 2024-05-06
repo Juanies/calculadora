@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.LoginControlador;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,8 @@ public class LoginForm extends JFrame {
     private JLabel inicioIncorrecto;
 
     public LoginForm() {
+
+
         setTitle("Login Form");
         setSize(400, 230);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +51,6 @@ public class LoginForm extends JFrame {
 
         setLocationRelativeTo(null);
         setVisible(true);
-
 
     }
 

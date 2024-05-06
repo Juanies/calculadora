@@ -14,4 +14,11 @@ public class Ventanas {
         return  calc;
     }
 
+    public LoginForm CalculadoraALogin( Calculadora calculadora){
+        LoginForm login = null;
+        calculadora.dispose();
+        login = new LoginForm();
+        return  login;
+    }
+
 }

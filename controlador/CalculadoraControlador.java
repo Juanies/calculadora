@@ -23,6 +23,11 @@ public class CalculadoraControlador implements ActionListener {
         for(JButton boton : calculadora.botones){
             boton.addActionListener(this);
         }
+
+        calculadora.changeUser.addActionListener(this);
+
+
+
     }
 
     @Override
@@ -56,7 +61,7 @@ public class CalculadoraControlador implements ActionListener {
                 actualizarLinea("9");
                 break;
             case "+":
-                actualizarLinea("9");
+                actualizarLinea("+");
                 break;
                 case "/":
                     actualizarLinea("/");
@@ -79,7 +84,19 @@ public class CalculadoraControlador implements ActionListener {
             case "CE":
                 resetear();
                 break;
+            case "Cambiar usuario":
+                cambiarUsuario(calc);
+                break;
+            case "=":
+                calc.setRes(String.valueOf(Calculos.calcular(linea)));;
+                break;
         }
+    }
+
+    public static void cambiarUsuario(Calculadora calculadora){
+        Ventanas ventana = new Ventanas();
+        new LoginControlador(ventana.CalculadoraALogin(calculadora));
+
     }
 
     public void didivir1(){

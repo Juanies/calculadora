@@ -10,7 +10,7 @@ public class Calculadora extends JFrame {
     private JLabel display;
     private JLabel user;
     private JLabel rol;
-    private JButton changeUser;
+    public JButton changeUser;
     public ArrayList<JButton> botones;
 
 
