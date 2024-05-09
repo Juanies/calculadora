@@ -9,11 +9,11 @@ public class Ficheros {
 
 
     public static File getFicherousuarios(){
-        return new File("C:\\Users\\Juan\\Downloads\\calculadora\\datos\\usuarios.dat");
+        return new File("F:\\1DAM\\Nueva carpeta\\calculadora\\datos\\usuarios.dat");
     }
 
     public static File getFicheroUsuarioActual(){
-        return new File("C:\\Users\\Juan\\Downloads\\calculadora\\datos\\usuarioActual.dat");
+        return new File("F:\\1DAM\\Nueva carpeta\\calculadora\\datos\\usuarioActual.dat");
     }
 
     public static int ultimaIdUsuario() throws IOException, ClassNotFoundException {
@@ -86,4 +86,9 @@ public class Ficheros {
 
         oout.close();
     }
+
+    public static Usuario usuarioActual() throws IOException, ClassNotFoundException {
+        return leerDatos(getFicheroUsuarioActual()).get(0);
+    }
+
 }
