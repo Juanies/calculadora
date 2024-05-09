@@ -9,7 +9,7 @@ import programa.Usuario;
 import programa.Ventanas;
 import vista.*;
 public class LoginControlador implements ActionListener {
-    private LoginForm login;
+    private final LoginForm login;
     private Calculadora calculadora;
 
     public LoginControlador(LoginForm view) {
@@ -24,13 +24,9 @@ public class LoginControlador implements ActionListener {
                 try {
                     setLogin();
                     break;
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
+                } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-            case "=" :
-                Calculos.calcular(calculadora.getRes());
         }
     }
 

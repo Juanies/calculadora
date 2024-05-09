@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 import programa.Ficheros.*;
 public class Usuario implements Serializable {
+    @Serial
     private static final long serialVersionUID = -6083946477523703971L;
     static int contador;
 
     static {
         try {
             contador = Ficheros.ultimaIdUsuario();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

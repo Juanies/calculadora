@@ -4,6 +4,9 @@ import controlador.LoginControlador;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileInputStream;
+
+
 
 public class LoginForm extends JFrame {
 
@@ -16,29 +19,50 @@ public class LoginForm extends JFrame {
 
 
         setTitle("Login Form");
-        setSize(400, 230);
+        setSize(    700, 430);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null); // Establecer el layout a null para posicionamiento absoluto
 
+        JPanel frame = new JPanel();
+        frame.setBackground(Color.BLACK);
+        frame.setBounds(350, 0, 350, 430);
+        frame.setLayout(null);
+
+        ImageIcon imageIcon = new ImageIcon("C:\\Users\\Juan\\Downloads\\calculadora\\OIP.jpg");
+
+        JLabel label = new JLabel(imageIcon);
+        label.setBounds(0, 100, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+        frame.add(label);
+
+        JLabel titulo = new JLabel("Tu calculadora");
+        titulo.setBounds(70, 20, 200, 25);
+        titulo.setFont(new Font("Arial", Font.PLAIN, 30));
+        titulo.setForeground(Color.ORANGE);
+        frame.add(titulo);
+
+
+        add(frame);
+
+
         JLabel textPanel = new JLabel("Inicia Sesión");
-        textPanel.setBounds(150, 10, 100, 25);
+        textPanel.setBounds(135, 10, 100, 25);
         textPanel.setFont(new Font("Arial", Font.PLAIN, 16));
         add(textPanel);
 
         JLabel usuarioLabel = new JLabel("Username:");
-        usuarioLabel.setBounds(90, 40, 80, 25);
+        usuarioLabel.setBounds(67, 90, 80, 25);
         add(usuarioLabel);
 
         usuarioField = new JTextField(20);
-        usuarioField.setBounds(180, 40, 160, 25);
+        usuarioField.setBounds(67, 120, 220, 25);
         add(usuarioField);
 
         JLabel contrasenaLabel = new JLabel("Password:");
-        contrasenaLabel.setBounds(90, 70, 80, 25);
+        contrasenaLabel.setBounds(67, 170, 80, 25);
         add(contrasenaLabel);
 
         contrasenaField = new JPasswordField(20);
-        contrasenaField.setBounds(180, 70, 160, 25);
+        contrasenaField.setBounds(67, 200, 220, 25);
         add(contrasenaField);
 
         inicioIncorrecto = new JLabel("");
@@ -46,7 +70,9 @@ public class LoginForm extends JFrame {
         add(inicioIncorrecto);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(180, 130, 90, 25);
+        loginButton.setBounds(67, 300, 220, 25);
+        loginButton.setBackground(Color.ORANGE);
+        loginButton.setForeground(Color.BLACK);
         add(loginButton);
 
         setLocationRelativeTo(null);

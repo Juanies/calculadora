@@ -9,16 +9,21 @@ public class Ficheros {
 
 
     public static File getFicherousuarios(){
-        return new File("C:\\Users\\Juan\\calculadora\\datos\\usuarios.dat");
+        return new File("C:\\Users\\Juan\\Downloads\\calculadora\\datos\\usuarios.dat");
     }
 
     public static File getFicheroUsuarioActual(){
-        return new File("C:\\Users\\Juan\\calculadora\\datos\\usuarioActual.dat");
+        return new File("C:\\Users\\Juan\\Downloads\\calculadora\\datos\\usuarioActual.dat");
     }
 
     public static int ultimaIdUsuario() throws IOException, ClassNotFoundException {
         ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
-        return usuarios.get(usuarios.size() -1).getId();
+        int res = 0;
+        if (!usuarios.isEmpty()){
+            res = usuarios.getLast().getId();
+        }
+
+        return res;
     }
 
     public static void primerUsuario() throws IOException {
