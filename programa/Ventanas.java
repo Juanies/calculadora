@@ -1,7 +1,10 @@
 package programa;
 
+import vista.Admin;
 import vista.LoginForm;
 import vista.Calculadora;
+
+import java.io.IOException;
 
 public class Ventanas {
 
@@ -19,6 +22,13 @@ public class Ventanas {
         calculadora.dispose();
         login = new LoginForm();
         return  login;
+    }
+
+    public Admin CalculadoraAadmin(Calculadora calculadora) throws IOException, ClassNotFoundException {
+        Admin admin = null;
+        calculadora.dispose();
+        admin = new Admin();
+        return  admin;
     }
 
 }

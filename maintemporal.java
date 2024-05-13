@@ -1,10 +1,13 @@
+import controlador.CalculadoraControlador;
 import controlador.LoginControlador;
+import programa.Ficheros;
 import vista.*;
 
 import java.io.IOException;
 
 public class maintemporal {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-         Admin x = new Admin();
+         Calculadora x = new Calculadora();
+        new CalculadoraControlador(x);
     }
 }

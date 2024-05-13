@@ -5,7 +5,7 @@ import controlador.LoginControlador;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
-
+import java.net.URL;
 
 
 public class LoginForm extends JFrame {
@@ -28,10 +28,11 @@ public class LoginForm extends JFrame {
         frame.setBounds(350, 0, 350, 430);
         frame.setLayout(null);
 
-        ImageIcon imageIcon = new ImageIcon("F:\\1DAM\\Nueva carpeta\\calculadora\\OIP.jpg");
+        ImageIcon imageIcon = new ImageIcon("OIP.jpg");
 
         JLabel label = new JLabel(imageIcon);
-        label.setBounds(0, 100, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+        label.setBounds(15, 100, imageIcon.getIconWidth(), imageIcon.getIconHeight());
+        label.setHorizontalTextPosition(label.CENTER);
         frame.add(label);
 
         JLabel titulo = new JLabel("Tu calculadora");

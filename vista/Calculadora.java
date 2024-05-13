@@ -39,8 +39,12 @@ public class Calculadora extends JFrame {
         display = new JLabel();
         display.setHorizontalAlignment(JTextField.RIGHT);
         display.setFont(new Font("Arial", Font.PLAIN, 24));
+        display.setPreferredSize(new Dimension(100, 20));
+        display.setLayout(null);
+        display.setBounds(100, 100, 20, 20);
+        mainPanel.add(display);
 
-        mainPanel.add(display, BorderLayout.CENTER);
+
         botones = new ArrayList<>();
 
         buttonPanel = new JPanel();

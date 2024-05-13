@@ -8,7 +8,7 @@ import programa.Calculos;
 import programa.Usuario;
 import programa.Ventanas;
 import vista.*;
-public class LoginControlador implements ActionListener {
+public class  LoginControlador implements ActionListener {
     private final LoginForm login;
     private Calculadora calculadora;
 
