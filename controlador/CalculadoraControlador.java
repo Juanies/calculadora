@@ -5,22 +5,24 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.lang.reflect.GenericArrayType;
 
-import programa.Calculos;
-import programa.Ficheros;
-import programa.Usuario;
-import programa.Ventanas;
+import programa.*;
 import vista.*;
 
 import javax.sound.sampled.Line;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+
 public class CalculadoraControlador implements ActionListener {
 
     private  Calculadora calc;
     public String linea = "";
     public CalculadoraControlador(Calculadora calculadora) {
         this.calc = calculadora;
+        new Teclado(new Calculadora());
 
         for(JButton boton : calculadora.botones){
             boton.addActionListener(this);
@@ -30,8 +32,13 @@ public class CalculadoraControlador implements ActionListener {
 
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
+
+
+
+
         switch (e.getActionCommand()){
             case "1":
                 actualizarLinea("1");
@@ -100,10 +107,6 @@ public class CalculadoraControlador implements ActionListener {
 
     }
 
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        System.out.println("Tecla presionada: " + KeyEvent.getKeyText(keyCode));
-    }
 
     public static void cambiarUsuario(Calculadora calculadora){
         Ventanas ventana = new Ventanas();
@@ -160,5 +163,5 @@ public class CalculadoraControlador implements ActionListener {
         linea = " ";
         calc.setRes(linea);
     }
-
 }
+
