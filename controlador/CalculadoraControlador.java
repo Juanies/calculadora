@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
@@ -22,22 +24,21 @@ public class CalculadoraControlador implements ActionListener {
     public String linea = "";
     public CalculadoraControlador(Calculadora calculadora) {
         this.calc = calculadora;
-        new Teclado(new Calculadora());
 
         for(JButton boton : calculadora.botones){
             boton.addActionListener(this);
         }
 
         calculadora.changeUser.addActionListener(this);
-
+        teclado(this);
     }
 
+    public  void teclado(CalculadoraControlador x) {
+        Teclado x2 = new Teclado(x);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
-
 
         switch (e.getActionCommand()){
             case "1":
@@ -114,6 +115,7 @@ public class CalculadoraControlador implements ActionListener {
     }
 
 
+
     public void equal() throws IOException, ClassNotFoundException {
         try{
             if(linea.equals("777") && Ficheros.usuarioActual().getRol().equals("Admin")){
@@ -137,6 +139,10 @@ public class CalculadoraControlador implements ActionListener {
             JOptionPane.showMessageDialog(null, "Contraseña o Rol Incorrecto");
         }
 
+    }
+
+    public void setLinea(String linea) {
+        this.linea += linea;
     }
 
     public void didivir1(){
