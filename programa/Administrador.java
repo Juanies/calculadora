@@ -1,7 +1,7 @@
 package programa;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.lang.foreign.PaddingLayout;
 import java.util.ArrayList;
 
 public class Administrador extends Usuario{
@@ -14,9 +14,15 @@ public class Administrador extends Usuario{
         boolean res = false;
         ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
-        usuario = new Administrador(nombre, contrasena, rol);
-        usuarios.add((Usuario) usuario);
-        res = true;
+
+        if (!Usuario.NombreUsuarioRepetido(usuarios, nombre)){
+            usuario = new Administrador(nombre, contrasena, rol);
+            usuarios.add((Usuario) usuario);
+            res = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Nombre de usuario ya Existe");
+        }
+
 
         Ficheros.insertarDatos(usuarios, Ficheros.getFicherousuarios());
 

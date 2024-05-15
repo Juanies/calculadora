@@ -40,20 +40,46 @@ public class nuevosUsuarios extends JFrame {
         add(contraseña);
 
 
-        crearUsuario = new JButton("Login");
+        crearUsuario = new JButton("Register");
         crearUsuario.setBounds(67, 280, 220, 25);
         crearUsuario.setBackground(Color.ORANGE);
         crearUsuario.setForeground(Color.BLACK);
         add(crearUsuario);
 
+        volver = new JButton("Volver");
+        volver.setBounds(67, 320, 220, 25);
+        add(volver);
+
         String[] choices = {"Usuario", "Admin"};
-        JComboBox<String> choiceBox = new JComboBox<>(choices);
-        choiceBox.setBounds(67, 220, 220, 25);
-        add(choiceBox);
+        rol = new JComboBox<>(choices);
+        rol.setBounds(67, 220, 220, 25);
+        add(rol);
 
 
         setVisible(true);
-
     }
 
+    public String getUsuario() {
+        return usuario.getText();
+    }
+
+    public void setUsuario(JTextField usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña.getText();
+    }
+
+    public void setContraseña(JTextField contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getRol() {
+        return (String) rol.getSelectedItem();
+    }
+
+    public void setRol(JComboBox rol) {
+        this.rol = rol;
+    }
 }

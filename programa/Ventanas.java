@@ -1,8 +1,10 @@
 package programa;
 
+import controlador.AdminControlador;
 import vista.Admin;
 import vista.LoginForm;
 import vista.Calculadora;
+import vista.nuevosUsuarios;
 
 import java.io.IOException;
 
@@ -28,6 +30,14 @@ public class Ventanas {
         Admin admin = null;
         calculadora.dispose();
         admin = new Admin();
+        return  admin;
+    }
+
+    public Admin CrearUsuarioAAdmin(nuevosUsuarios nuevousuarios) throws IOException, ClassNotFoundException {
+        Admin admin = null;
+        nuevousuarios.dispose();
+        admin = new Admin();
+        new AdminControlador(admin);
         return  admin;
     }
 
