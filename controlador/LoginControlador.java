@@ -9,6 +9,8 @@ import vista.*;
 
 import javax.swing.*;
 
+import static programa.Registro.escribirRegistro;
+
 public class  LoginControlador implements ActionListener {
     private final LoginForm login;
     private Calculadora calculadora;
@@ -44,7 +46,7 @@ public class  LoginControlador implements ActionListener {
             calculadora.setRol(user.getRol());
             login.esInicioValido(res);
             Registro registro = new Registro(login.getUsuario());
-            registro.escribirRegistro(registro);
+            escribirRegistro(registro);
             new CalculadoraControlador(calculadora);
         }else{
             JOptionPane.showMessageDialog(null, "Error al iniciar sesion");

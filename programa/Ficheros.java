@@ -79,17 +79,7 @@ public class Ficheros {
 
     }
 
-    public static void insertarDato(Usuario dato, File fichero) throws IOException, ClassNotFoundException {
 
-        ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
-        usuarios.add(dato);
-
-        try (ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(getFicherousuarios()))) {
-            for (Usuario reg : usuarios) {
-                oout.writeObject(reg);
-            }
-        }
-    }
 
     public static void insertarSoloUnDato(Object nuevosDato, File fichero) throws IOException, ClassNotFoundException {
         ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(fichero));

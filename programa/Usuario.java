@@ -2,6 +2,8 @@ package programa;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import programa.Ficheros.*;
 public class Usuario implements Serializable {
@@ -23,12 +25,30 @@ public class Usuario implements Serializable {
     private String rol;
     private String contrasena;
 
+    private String fechaCreacion;
+
     public Usuario(String nombre, String contrasena, String rol) {
         this.id = ++contador;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.rol = rol;
     }
+
+    private static String cogerfecha() {
+        Date fechaActual = new Date();
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fechaActual);
+
+        int hora = calendario.get(Calendar.HOUR_OF_DAY);
+        int minutos = calendario.get(Calendar.MINUTE);
+        int dia = calendario.get(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH) + 1;
+        int anio = calendario.get(Calendar.YEAR);
+
+        return hora + ":" + minutos + " " + dia + "-" + mes + "-" + anio;
+    }
+
     //TODO: Hacer el inicio de sesion
     public static boolean iniciarSesion(String nombre, String contraseña) throws IOException, ClassNotFoundException {
         File fichero = Ficheros.getFicherousuarios();

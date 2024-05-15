@@ -30,47 +30,7 @@ public class CalculadoraControlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         switch (e.getActionCommand()){
-            case "1":
-                actualizarLinea("1");
-                break;
-            case "2":
-                actualizarLinea("2");
-                break;
-            case "3":
-                actualizarLinea("3");
-                break;
-            case "4":
-                actualizarLinea("4");
-                break;
-            case "5":
-                actualizarLinea("5");
-                break;
-            case "6":
-                actualizarLinea("6");
-                break;
-            case "7":
-                actualizarLinea("7");
-                break;
-            case "8":
-                actualizarLinea("8");
-                break;
-            case "9":
-                actualizarLinea("9");
-                break;
-            case "+":
-                actualizarLinea("+");
-                break;
-                case "/":
-                    actualizarLinea("/");
-                break;
-                case "*":
-                    actualizarLinea("*");
-                break;
-                case "-":
-                    actualizarLinea("-");
-                break;
             case "x\u00B2":
                 potencia();
                 break;
@@ -93,6 +53,9 @@ public class CalculadoraControlador implements ActionListener {
                     throw new RuntimeException(ex);
                 }
                 break ;
+            default:
+                actualizarLinea(e.getActionCommand());
+                break;
         }
 
 
