@@ -5,11 +5,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Calculadora extends JFrame {
-    private JFrame frame;
-    private JPanel buttonPanel;
-    private JLabel display;
-    private JLabel user;
-    private JLabel rol;
+    public JFrame frame;
+    public JPanel buttonPanel;
+    public JLabel display;
+    public JLabel user;
+    public JLabel rol;
     public JButton changeUser;
     public ArrayList<JButton> botones;
 

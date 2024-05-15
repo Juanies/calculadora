@@ -4,10 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import programa.Calculos;
-import programa.Usuario;
-import programa.Ventanas;
+import programa.*;
 import vista.*;
+
+import javax.swing.*;
+
 public class  LoginControlador implements ActionListener {
     private final LoginForm login;
     private Calculadora calculadora;
@@ -32,15 +33,24 @@ public class  LoginControlador implements ActionListener {
 
     public void setLogin() throws IOException, ClassNotFoundException {
         boolean res = Usuario.iniciarSesion(login.getUsuario(), login.getPassword());
-        Ventanas ventana = new Ventanas();
 
-        calculadora = ventana.loginaCalculadora(res, login);
+        if (res){
+            Ventanas ventana = new Ventanas();
 
-        Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
-        calculadora.setUser(user.getNombre());
-        calculadora.setRol(user.getRol());
-        login.esInicioValido(res);
-        new CalculadoraControlador(calculadora);
+            calculadora = ventana.loginaCalculadora(res, login);
+            Ficheros.usuarioActual();
+            Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
+            calculadora.setUser(user.getNombre());
+            calculadora.setRol(user.getRol());
+            login.esInicioValido(res);
+            Registro registro = new Registro(login.getUsuario());
+            registro.escribirRegistro(registro);
+            new CalculadoraControlador(calculadora);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesion");
+
+        }
+
     }
 
 }

@@ -1,5 +1,6 @@
 package controlador;
 
+import programa.Ventanas;
 import vista.Admin;
 import vista.Usuarios;
 
@@ -31,7 +32,12 @@ public class AdminControlador implements ActionListener {
                 }
                 break;
             case "Nuevo usuario":
-                System.out.println("b");
+                Ventanas ventana = new Ventanas();
+                try {
+                    ventana.AdminaNuevoUsuario(admin);
+                } catch (IOException | ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
                 break;
         }
     }

@@ -3,24 +3,15 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.lang.reflect.GenericArrayType;
 
 import programa.*;
 import vista.*;
 
-import javax.sound.sampled.Line;
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 public class CalculadoraControlador implements ActionListener {
 
-    private  Calculadora calc;
+    private Calculadora calc;
     public String linea = "";
     public CalculadoraControlador(Calculadora calculadora) {
         this.calc = calculadora;
