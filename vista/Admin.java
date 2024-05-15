@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Admin extends JFrame {
-    private JButton verUsuarios;
+    public JButton verUsuarios;
 
-    private JButton nuevoUsuario;
+    public JButton nuevoUsuario;
 
     public Admin() throws IOException, ClassNotFoundException {
         setTitle("Tabla de Usuarios");

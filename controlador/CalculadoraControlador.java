@@ -121,7 +121,9 @@ public class CalculadoraControlador implements ActionListener {
             if(linea.equals("777") && Ficheros.usuarioActual().getRol().equals("Admin")){
                 Ventanas ventana = new Ventanas();
                 try {
-                    ventana.CalculadoraAadmin(calc);
+                    Admin admin = ventana.CalculadoraAadmin(calc);
+
+                    new AdminControlador(admin);
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }

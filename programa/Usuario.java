@@ -46,6 +46,7 @@ public class Usuario implements Serializable {
         return resultado;
     }
 
+
     public static boolean NombreUsuarioRepetido(ArrayList<Usuario> usuarios, String nombreUsuario){
         boolean res = false;
         for(Usuario dato : usuarios){

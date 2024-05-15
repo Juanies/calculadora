@@ -18,7 +18,7 @@ public class Usuarios extends JFrame {
 
         ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
-        String[] columnNames = {"ID", "Nombre", "Rol", "Acción"};
+        String[] columnNames = {"ID", "Nombre", "Rol"};
 
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 

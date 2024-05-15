@@ -16,8 +16,6 @@ public class LoginForm extends JFrame {
     private JLabel inicioIncorrecto;
 
     public LoginForm() {
-
-
         setTitle("Login Form");
         setSize(    700, 430);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
