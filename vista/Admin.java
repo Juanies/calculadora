@@ -13,6 +13,8 @@ public class Admin extends JFrame {
 
     public JButton nuevoUsuario;
 
+    public JButton borrarUsuario;
+
     public Admin() throws IOException, ClassNotFoundException {
         setTitle("Tabla de Usuarios");
         setSize(700, 430);
@@ -37,11 +39,17 @@ public class Admin extends JFrame {
         nuevoUsuario.setBackground(Color.ORANGE);
         nuevoUsuario.setBounds(280, 120, 140, 40);
 
+        borrarUsuario = new JButton("Borrar usuario");
+        borrarUsuario.setBackground(Color.ORANGE);
+        borrarUsuario.setBounds(280, 160, 140, 40);
+
+
         volver = new JButton("Volver");
         volver.setBackground(Color.ORANGE);
-        volver.setBounds(280, 160, 140, 40);
+        volver.setBounds(280, 200, 140, 40);
 
         panel.add(volver);
+        panel.add(borrarUsuario);
 
         panel.add(nuevoUsuario);
 

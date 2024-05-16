@@ -3,6 +3,7 @@ package programa;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Ficheros {
 
@@ -71,9 +72,24 @@ public class Ficheros {
         ArrayList<Usuario> usuarios = new ArrayList<>(Arrays.asList(encontrado));
 
         insertarDatos(usuarios, getFicheroUsuarioActual());
-
     }
 
+    public static void borrarUsuario(String nombre) throws IOException, ClassNotFoundException {
+
+        ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
+
+        Iterator<Usuario> iterator = usuarios.iterator();
+        while (iterator.hasNext()) {
+            Usuario usuario = iterator.next();
+            if (usuario.getNombre().equals(nombre)) {
+                iterator.remove();
+            }
+        }
+
+
+        Ficheros.insertarDatos(usuarios, getFicherousuarios());
+
+    }
     public static Usuario getUsuarioActual() throws IOException, ClassNotFoundException {
         return leerDatos(getFicheroUsuarioActual()).get(0);
     }

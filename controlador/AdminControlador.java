@@ -1,10 +1,12 @@
 package controlador;
 
+import programa.Ficheros;
 import programa.Ventanas;
 import vista.Admin;
 import vista.Calculadora;
 import vista.Usuarios;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -19,6 +21,7 @@ public class AdminControlador implements ActionListener {
         vista.verUsuarios.addActionListener(this);
         vista.nuevoUsuario.addActionListener(this);
         vista.volver.addActionListener(this);
+        vista.borrarUsuario.addActionListener(this);
 
     }
 
@@ -54,6 +57,14 @@ public class AdminControlador implements ActionListener {
                     x.administraNuevoObjeto(admin, calculadora);
                     new CalculadoraControlador(calculadora);
 
+                } catch (IOException | ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                break;
+            case "Borrar usuario":
+                 String dato = (String) JOptionPane.showInputDialog( "Introduce un dato");
+                try {
+                    Ficheros.borrarUsuario(dato);
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
