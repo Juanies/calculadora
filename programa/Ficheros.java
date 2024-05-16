@@ -1,5 +1,6 @@
 package programa;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,20 +77,29 @@ public class Ficheros {
 
     public static void borrarUsuario(String nombre) throws IOException, ClassNotFoundException {
 
-        ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
+            ArrayList<Usuario> usuarios = leerDatos(getFicherousuarios());
 
-        Iterator<Usuario> iterator = usuarios.iterator();
-        while (iterator.hasNext()) {
-            Usuario usuario = iterator.next();
-            if (usuario.getNombre().equals(nombre)) {
-                iterator.remove();
+            // Uso de iterador para poder borrar el usuario en el bucle
+            Iterator<Usuario> iterator = usuarios.iterator();
+            boolean encontrado = false;
+            while (iterator.hasNext()) {
+                Usuario usuario = iterator.next();
+                if (usuario.getNombre().equals(nombre)) {
+                    iterator.remove();
+                    encontrado = true;
+                }
             }
-        }
 
+            JOptionPane.showMessageDialog(null , "Usuario borrado con exito");
 
-        Ficheros.insertarDatos(usuarios, getFicherousuarios());
+            if (!encontrado){
+                JOptionPane.showMessageDialog(null , "Usuario no encontrado");
+            }
+
+            Ficheros.insertarDatos(usuarios, getFicherousuarios());
 
     }
+
     public static Usuario getUsuarioActual() throws IOException, ClassNotFoundException {
         return leerDatos(getFicheroUsuarioActual()).get(0);
     }
