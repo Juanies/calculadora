@@ -10,22 +10,24 @@ public class Administrador extends Usuario{
     }
 
     public static boolean crearNuevoUsuario(String nombre, String contrasena, String rol) throws IOException, ClassNotFoundException {
+
         Object usuario = new Object();
         boolean res = false;
         ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
-
         if (!Usuario.NombreUsuarioRepetido(usuarios, nombre)){
+
             usuario = new Administrador(nombre, contrasena, rol);
             usuarios.add((Usuario) usuario);
             res = true;
+
         }else{
+
             JOptionPane.showMessageDialog(null, "Nombre de usuario ya Existe");
+
         }
 
-
         Ficheros.insertarDatos(usuarios, Ficheros.getFicherousuarios());
-
 
         return res;
     }

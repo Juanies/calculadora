@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import programa.Ficheros.*;
 public class Usuario implements Serializable {
     @Serial
     private static final long serialVersionUID = -6083946477523703971L;
@@ -49,13 +48,7 @@ public class Usuario implements Serializable {
             }
         }
 
-
-
         Ficheros.insertarDatos(usuarios, Ficheros.getFicherousuarios());
-
-
-
-
     }
 
 
@@ -82,15 +75,18 @@ public class Usuario implements Serializable {
     }
 
     public static boolean iniciarSesion(String nombre, String contraseña) throws IOException, ClassNotFoundException {
+
+        boolean resultado = false;
+
         File fichero = Ficheros.getFicherousuarios();
         ObjectInputStream input = new ObjectInputStream(new FileInputStream(fichero));
-        boolean resultado = false;
+
         ArrayList<Usuario> datos = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
         for(Usuario dato : datos){
             if (dato.getNombre().equals(nombre) && dato.getContrasena().equals(contraseña)){
                 resultado = true;
-                Ficheros.insertarSoloUnDato(dato, Ficheros.getFicheroUsuarioActual());
+                Ficheros.insertarDato(dato, Ficheros.getFicheroUsuarioActual());
             }
         }
 
@@ -99,7 +95,9 @@ public class Usuario implements Serializable {
 
 
     public static boolean NombreUsuarioRepetido(ArrayList<Usuario> usuarios, String nombreUsuario){
+
         boolean res = false;
+
         for(Usuario dato : usuarios){
             if (nombreUsuario.equals(dato.getNombre())){
                 res = true;
@@ -109,14 +107,17 @@ public class Usuario implements Serializable {
     }
 
     public static Usuario buscarUsuarioPorNombre(String nombre) throws IOException, ClassNotFoundException {
+
         ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
         Usuario resultado = null;
+
         for(Usuario dato : usuarios){
             if (dato.getNombre().equals(nombre)){
                 resultado = dato;
             }
         }
         return resultado;
+
     }
 
 

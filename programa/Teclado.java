@@ -20,9 +20,12 @@ import java.util.Arrays;
             manager.addKeyEventPostProcessor(new KeyEventPostProcessor() {
                 @Override
                 public boolean postProcessKeyEvent(KeyEvent e) {
+
                     if (e.getID() == KeyEvent.KEY_PRESSED) {
+
                         letra = e.getKeyChar();
                         code = e.getKeyCode();
+
                         try {
                             comprobarLetra(ob);
                         } catch (IOException | ClassNotFoundException ex) {
@@ -30,6 +33,7 @@ import java.util.Arrays;
                         }
 
                     }
+
                     return true;
                 }
             });

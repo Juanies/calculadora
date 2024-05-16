@@ -4,18 +4,12 @@ import programa.Ficheros;
 import programa.Usuario;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Admin extends JFrame {
     public JButton verUsuarios;
-    public JButton Volver;
+    public JButton volver;
 
     public JButton nuevoUsuario;
 
@@ -24,7 +18,7 @@ public class Admin extends JFrame {
         setSize(700, 430);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
-        Usuario usuario = Ficheros.usuarioActual();
+        Usuario usuario = Ficheros.getUsuarioActual();
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.BLACK);
@@ -43,11 +37,11 @@ public class Admin extends JFrame {
         nuevoUsuario.setBackground(Color.ORANGE);
         nuevoUsuario.setBounds(280, 120, 140, 40);
 
-        Volver = new JButton("Volver");
-        Volver.setBackground(Color.ORANGE);
-        Volver.setBounds(280, 160, 140, 40);
+        volver = new JButton("Volver");
+        volver.setBackground(Color.ORANGE);
+        volver.setBounds(280, 160, 140, 40);
 
-        panel.add(Volver);
+        panel.add(volver);
 
         panel.add(nuevoUsuario);
 

@@ -5,13 +5,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import programa.Administrador;
-import programa.Usuario;
 import programa.Ventanas;
 import vista.*;
 public class  CrearUsuarioControlador implements ActionListener {
-    private final nuevosUsuarios nuevosusuarios;
+    private final NuevosUsuarios nuevosusuarios;
 
-    public CrearUsuarioControlador(nuevosUsuarios vista) {
+    public CrearUsuarioControlador(NuevosUsuarios vista) {
         this.nuevosusuarios = vista;
 
         vista.crearUsuario.addActionListener(this);
@@ -28,15 +27,19 @@ public class  CrearUsuarioControlador implements ActionListener {
         switch (e.getActionCommand()){
             case "Register":
                 try {
+
                     System.out.println("x");
                     Administrador.crearNuevoUsuario(nuevosusuarios.getUsuario(), nuevosusuarios.getContraseña(), nuevosusuarios.getRol());
                     break;
+
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
             case "Volver":
+
                 Ventanas x = new Ventanas();
                 System.out.println("x");
+
                 try {
                     x.CrearUsuarioAAdmin(nuevosusuarios);
                 } catch (IOException | ClassNotFoundException ex) {

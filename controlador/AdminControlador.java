@@ -1,6 +1,5 @@
 package controlador;
 
-import programa.Usuario;
 import programa.Ventanas;
 import vista.Admin;
 import vista.Calculadora;
@@ -19,7 +18,7 @@ public class AdminControlador implements ActionListener {
 
         vista.verUsuarios.addActionListener(this);
         vista.nuevoUsuario.addActionListener(this);
-        vista.Volver.addActionListener(this);
+        vista.volver.addActionListener(this);
 
     }
 
@@ -32,7 +31,8 @@ public class AdminControlador implements ActionListener {
                     Ventanas x = new Ventanas();
                     Usuarios usuario = new Usuarios();
                     x.administraNuevoObjeto(admin, usuario);
-                    new verUsuariosControlador(usuario);
+                    new VerUsuariosControlador(usuario);
+
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -41,6 +41,7 @@ public class AdminControlador implements ActionListener {
                 Ventanas ventana = new Ventanas();
                 try {
                     ventana.AdminaNuevoUsuario(admin);
+
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -48,9 +49,11 @@ public class AdminControlador implements ActionListener {
             case "Volver":
                 Ventanas x = new Ventanas();
                 Calculadora calculadora = new Calculadora();
+
                 try {
                     x.administraNuevoObjeto(admin, calculadora);
                     new CalculadoraControlador(calculadora);
+
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }

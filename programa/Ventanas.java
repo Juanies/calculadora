@@ -5,11 +5,10 @@ import controlador.CrearUsuarioControlador;
 import vista.Admin;
 import vista.Calculadora;
 import vista.LoginForm;
-import vista.nuevosUsuarios;
+import vista.NuevosUsuarios;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 public class Ventanas {
 
@@ -36,7 +35,7 @@ public class Ventanas {
         return  admin;
     }
 
-    public Admin CrearUsuarioAAdmin(nuevosUsuarios nuevousuarios) throws IOException, ClassNotFoundException {
+    public Admin CrearUsuarioAAdmin(NuevosUsuarios nuevousuarios) throws IOException, ClassNotFoundException {
         Admin admin = null;
         nuevousuarios.dispose();
         admin = new Admin();
@@ -55,10 +54,10 @@ public class Ventanas {
         return nuevoObjeto;
     }
 
-    public nuevosUsuarios AdminaNuevoUsuario(Admin vista) throws IOException, ClassNotFoundException {
-        nuevosUsuarios nuevosusuarios = null;
+    public NuevosUsuarios AdminaNuevoUsuario(Admin vista) throws IOException, ClassNotFoundException {
+        NuevosUsuarios nuevosusuarios = null;
         vista.dispose();
-        nuevosusuarios = new nuevosUsuarios();
+        nuevosusuarios = new NuevosUsuarios();
         new CrearUsuarioControlador(nuevosusuarios);
         return  nuevosusuarios;
     }

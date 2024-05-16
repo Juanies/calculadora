@@ -15,8 +15,8 @@ public class CalculadoraControlador implements ActionListener {
     public String linea = "";
     public CalculadoraControlador(Calculadora calculadora) throws IOException, ClassNotFoundException {
         this.calc = calculadora;
-        calculadora.setUser(Ficheros.usuarioActual().getNombre());
-        calculadora.setRol(Ficheros.usuarioActual().getRol());
+        calculadora.setUser(Ficheros.getUsuarioActual().getNombre());
+        calculadora.setRol(Ficheros.getUsuarioActual().getRol());
 
         for(JButton boton : calculadora.botones){
             boton.addActionListener(this);
@@ -59,39 +59,36 @@ public class CalculadoraControlador implements ActionListener {
                 actualizarLinea(e.getActionCommand());
                 break;
         }
-
-
-
     }
-
 
     public static void cambiarUsuario(Calculadora calculadora){
         Ventanas ventana = new Ventanas();
         new LoginControlador(ventana.CalculadoraALogin(calculadora));
     }
 
-
-
     public void equal() throws IOException, ClassNotFoundException {
         try{
-            if(linea.equals("777") && Ficheros.usuarioActual().getRol().equals("Admin")){
+
+            if(linea.equals("777") && Ficheros.getUsuarioActual().getRol().equals("Admin")){
                 Ventanas ventana = new Ventanas();
                 try {
-                    Admin admin = ventana.CalculadoraAadmin(calc);
 
+                    Admin admin = ventana.CalculadoraAadmin(calc);
                     new AdminControlador(admin);
+
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
             }
-            else if(linea.equals("777") && !Ficheros.usuarioActual().getRol().equals("Admin")) {
+            else if(linea.equals("777") && !Ficheros.getUsuarioActual().getRol().equals("Admin")) {
                 JOptionPane.showMessageDialog(null, "Contraseña o Rol Incorrecto");
-
             }
             else{
+
                 String res = String.valueOf(Calculos.calcular(linea));
                 calc.setRes(res);
                 linea = res;
+
             }
         }catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Contraseña o Rol Incorrecto");

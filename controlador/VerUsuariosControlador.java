@@ -8,10 +8,10 @@ import programa.Ventanas;
 import vista.*;
 
 
-public class  verUsuariosControlador implements ActionListener {
+public class VerUsuariosControlador implements ActionListener {
     private final Usuarios vista;
 
-    public verUsuariosControlador(Usuarios vista) {
+    public VerUsuariosControlador(Usuarios vista) {
         this.vista = vista;
         vista.volver.addActionListener(this);
     }
@@ -21,13 +21,13 @@ public class  verUsuariosControlador implements ActionListener {
         switch (e.getActionCommand()){
             case "Volver":
                 try {
+
                     Ventanas x = new Ventanas();
                     Admin admin = new Admin();
                     x.administraNuevoObjeto(vista, admin);
                     new AdminControlador(admin);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
+
+                } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
                 break;

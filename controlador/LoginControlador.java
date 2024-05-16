@@ -9,8 +9,6 @@ import vista.*;
 
 import javax.swing.*;
 
-import static programa.Usuario.cogerfecha;
-
 
 public class  LoginControlador implements ActionListener {
     private final LoginForm login;
@@ -26,7 +24,9 @@ public class  LoginControlador implements ActionListener {
         switch (e.getActionCommand()){
             case "Login":
                 try {
+
                     setLogin();
+
                     break;
                 } catch (IOException | ClassNotFoundException ex) {
                     throw new RuntimeException(ex);
@@ -41,7 +41,7 @@ public class  LoginControlador implements ActionListener {
             Ventanas ventana = new Ventanas();
 
             calculadora = ventana.loginaCalculadora(res, login);
-            Ficheros.usuarioActual();
+            Ficheros.getUsuarioActual();
 
             Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
             user.setFechaInicioSesion(login.getUsuario());

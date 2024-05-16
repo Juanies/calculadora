@@ -3,7 +3,7 @@ package vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class nuevosUsuarios extends JFrame {
+public class NuevosUsuarios extends JFrame {
     public JButton volver;
     public JButton crearUsuario;
     public JLabel titulo;
@@ -13,7 +13,7 @@ public class nuevosUsuarios extends JFrame {
     public JTextField contraseña;
     public JComboBox rol;
 
-    public nuevosUsuarios() {
+    public NuevosUsuarios() {
         setTitle("Crear usuario");
         setSize(400, 430);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
