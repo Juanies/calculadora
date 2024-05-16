@@ -20,12 +20,44 @@ public class Usuario implements Serializable {
     }
 
     private int id;
-
     private String nombre;
     private String rol;
     private String contrasena;
+    private String fechaInicioSesion;
+    private String fechaCreacion = cogerfecha();
 
-    private String fechaCreacion;
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getFechaInicioSesion() {
+        return fechaInicioSesion;
+    }
+
+    public void setFechaInicioSesion(String nombre) throws IOException, ClassNotFoundException {
+        this.fechaInicioSesion = fechaInicioSesion;
+
+        ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
+
+        for(Usuario usuario : usuarios){
+            if (usuario.getNombre().equals(nombre)){
+                usuario.fechaInicioSesion = cogerfecha();
+            }
+        }
+
+
+
+        Ficheros.insertarDatos(usuarios, Ficheros.getFicherousuarios());
+
+
+
+
+    }
+
 
     public Usuario(String nombre, String contrasena, String rol) {
         this.id = ++contador;
@@ -34,7 +66,7 @@ public class Usuario implements Serializable {
         this.rol = rol;
     }
 
-    private static String cogerfecha() {
+    public static String cogerfecha() {
         Date fechaActual = new Date();
 
         Calendar calendario = Calendar.getInstance();
@@ -49,7 +81,6 @@ public class Usuario implements Serializable {
         return hora + ":" + minutos + " " + dia + "-" + mes + "-" + anio;
     }
 
-    //TODO: Hacer el inicio de sesion
     public static boolean iniciarSesion(String nombre, String contraseña) throws IOException, ClassNotFoundException {
         File fichero = Ficheros.getFicherousuarios();
         ObjectInputStream input = new ObjectInputStream(new FileInputStream(fichero));

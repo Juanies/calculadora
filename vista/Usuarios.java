@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Usuarios extends JFrame {
+
+    public JButton volver;
+
     public Usuarios() throws IOException, ClassNotFoundException {
         setTitle("Tabla de Usuarios");
         setSize(700, 430);
@@ -18,14 +21,21 @@ public class Usuarios extends JFrame {
 
         ArrayList<Usuario> usuarios = Ficheros.leerDatos(Ficheros.getFicherousuarios());
 
-        String[] columnNames = {"ID", "Nombre", "Rol"};
+        String[] columnNames = {"ID", "Nombre", "Rol", "Creacion", "Inicio sesion"};
 
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
         for (Usuario usuario : usuarios) {
-            Object[] rowData = {usuario.getId(), usuario.getNombre(), usuario.getRol(), "Eliminar"};
+            Object[] rowData = {usuario.getId(), usuario.getNombre(), usuario.getRol(), usuario.getFechaCreacion(), usuario.getFechaInicioSesion()};
+            System.out.println(usuario.getFechaInicioSesion());
             model.addRow(rowData);
         }
+
+        volver = new JButton("Volver");
+        volver.setBounds(67, 300, 220, 25);
+        volver.setBackground(Color.ORANGE);
+        volver.setForeground(Color.BLACK);
+        add(volver);
 
         JTable table = new JTable(model);
         table.isCellEditable(-2, -2);

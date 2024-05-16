@@ -9,7 +9,8 @@ import vista.*;
 
 import javax.swing.*;
 
-import static programa.Registro.escribirRegistro;
+import static programa.Usuario.cogerfecha;
+
 
 public class  LoginControlador implements ActionListener {
     private final LoginForm login;
@@ -41,12 +42,14 @@ public class  LoginControlador implements ActionListener {
 
             calculadora = ventana.loginaCalculadora(res, login);
             Ficheros.usuarioActual();
+
             Usuario user = Usuario.buscarUsuarioPorNombre(login.getUsuario());
-            calculadora.setUser(user.getNombre());
-            calculadora.setRol(user.getRol());
+            user.setFechaInicioSesion(login.getUsuario());
+
+            Ficheros.setUsuarioActual(login.getUsuario());
+
             login.esInicioValido(res);
-            Registro registro = new Registro(login.getUsuario());
-            escribirRegistro(registro);
+
             new CalculadoraControlador(calculadora);
         }else{
             JOptionPane.showMessageDialog(null, "Error al iniciar sesion");

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Admin extends JFrame {
     public JButton verUsuarios;
+    public JButton Volver;
 
     public JButton nuevoUsuario;
 
@@ -41,6 +42,12 @@ public class Admin extends JFrame {
         nuevoUsuario = new JButton("Nuevo usuario");
         nuevoUsuario.setBackground(Color.ORANGE);
         nuevoUsuario.setBounds(280, 120, 140, 40);
+
+        Volver = new JButton("Volver");
+        Volver.setBackground(Color.ORANGE);
+        Volver.setBounds(280, 160, 140, 40);
+
+        panel.add(Volver);
 
         panel.add(nuevoUsuario);
 

@@ -13,8 +13,10 @@ public class CalculadoraControlador implements ActionListener {
 
     private Calculadora calc;
     public String linea = "";
-    public CalculadoraControlador(Calculadora calculadora) {
+    public CalculadoraControlador(Calculadora calculadora) throws IOException, ClassNotFoundException {
         this.calc = calculadora;
+        calculadora.setUser(Ficheros.usuarioActual().getNombre());
+        calculadora.setRol(Ficheros.usuarioActual().getRol());
 
         for(JButton boton : calculadora.botones){
             boton.addActionListener(this);

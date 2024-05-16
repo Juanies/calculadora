@@ -7,7 +7,9 @@ import vista.Calculadora;
 import vista.LoginForm;
 import vista.nuevosUsuarios;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class Ventanas {
 
@@ -40,6 +42,17 @@ public class Ventanas {
         admin = new Admin();
         new AdminControlador(admin);
         return  admin;
+    }
+
+
+    public <T> T administraNuevoObjeto(JFrame viejaVista, T nuevaVista) throws IOException, ClassNotFoundException {
+        T nuevoObjeto = null;
+         viejaVista.dispose();
+
+
+        nuevoObjeto = nuevaVista;
+
+        return nuevoObjeto;
     }
 
     public nuevosUsuarios AdminaNuevoUsuario(Admin vista) throws IOException, ClassNotFoundException {
